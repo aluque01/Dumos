@@ -101,6 +101,9 @@ class DisconnectedViewController: UIViewController, PTDBeanManagerDelegate, UITa
         self.connectedBean = nil
     }
     
+    // * * * THE FOLLOWING 4 FUNCTIONS are really important for dynamically loading cells. We should copy and change this in ConnectedViewController where we add the dynamic cells that show each item and price (and the data that we feed that can be grabbed to calculate the total at the bottom).
+    // * * * Also, beanArray is the array of beans we can connect to; we're going to need to change this to an array of itemStructs (defined in ConnectedViewController). To do this requires connecting to the bean and seeing what the serial input of the IDs looks like.
+    
     // MARK: table functions
     func numberOfRowsInTableView(aTableView: UITableView) -> Int
     {

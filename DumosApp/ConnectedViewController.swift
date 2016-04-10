@@ -9,6 +9,12 @@
 import UIKit
 import AudioToolbox
 
+struct itemStruct {
+    var id = ""
+    var productName = ""
+    var price = 0
+}
+
 class ConnectedViewController: UIViewController, PTDBeanDelegate {
 
     var connectedBean: PTDBean?

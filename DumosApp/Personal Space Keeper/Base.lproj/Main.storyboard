@@ -37,6 +37,9 @@
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="3GA-uT-9dq" kind="show" id="Ul8-lz-k7e"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -57,7 +60,6 @@
                     <connections>
                         <outlet property="activityIndicator" destination="QJF-Kr-pYe" id="DRZ-yw-YEr"/>
                         <outlet property="beanTableView" destination="pt1-Tl-gRX" id="uSC-Mr-NE3"/>
-                        <segue destination="3GA-uT-9dq" kind="presentation" identifier="ViewConnection" id="UBe-gG-HbN"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -78,12 +80,6 @@
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Bean Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gGU-BI-OsK">
                                 <rect key="frame" x="163" y="40" width="88" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="thT-iy-tIn">
-                                <rect key="frame" x="20" y="69" width="374" height="33"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -125,12 +121,11 @@
                     </userDefinedRuntimeAttributes>
                     <connections>
                         <outlet property="BeanNameLabel" destination="gGU-BI-OsK" id="cCK-x8-MGq"/>
-                        <outlet property="DistanceLabel" destination="thT-iy-tIn" id="W7z-hp-2aq"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ClV-Ro-wIe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="978" y="-96"/>
+            <point key="canvasLocation" x="946" y="-98"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="sdL-th-f2V">

@@ -29,6 +29,15 @@
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
       </Testables>
+      <MacroExpansion>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "B74925121C8BF572003CC16E"
+            BuildableName = "Personal Space Keeper.app"
+            BlueprintName = "Personal Space Keeper"
+            ReferencedContainer = "container:../Personal Space Keeper.xcodeproj">
+         </BuildableReference>
+      </MacroExpansion>
       <AdditionalOptions>
       </AdditionalOptions>
    </TestAction>
@@ -42,15 +51,16 @@
       debugDocumentVersioning = "YES"
       debugServiceExtension = "internal"
       allowLocationSimulation = "YES">
-      <MacroExpansion>
+      <BuildableProductRunnable
+         runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "CF6F2E1DC83107BCB789DBEDA297534B"
-            BuildableName = "libBean-iOS-OSX-SDK.a"
-            BlueprintName = "Bean-iOS-OSX-SDK"
-            ReferencedContainer = "container:Pods.xcodeproj">
+            BlueprintIdentifier = "B74925121C8BF572003CC16E"
+            BuildableName = "Personal Space Keeper.app"
+            BlueprintName = "Personal Space Keeper"
+            ReferencedContainer = "container:../Personal Space Keeper.xcodeproj">
          </BuildableReference>
-      </MacroExpansion>
+      </BuildableProductRunnable>
       <AdditionalOptions>
       </AdditionalOptions>
    </LaunchAction>
