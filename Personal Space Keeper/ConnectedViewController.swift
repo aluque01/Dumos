@@ -15,6 +15,7 @@ class ConnectedViewController: UIViewController, PTDBeanDelegate, UITableViewDel
     var curLimit = 0.5
     
     var curItems : NSMutableArray = NSMutableArray()
+    var dupItems : NSMutableDictionary = NSMutableDictionary()
     
     
     @IBOutlet weak var itemsTableView : UITableView!
@@ -27,6 +28,9 @@ class ConnectedViewController: UIViewController, PTDBeanDelegate, UITableViewDel
         
         itemsTableView.delegate = self;
         itemsTableView.dataSource = self;
+        
+        //remove selection hightlighting
+        itemsTableView.allowsSelection = false
         
     }
     
@@ -50,6 +54,21 @@ class ConnectedViewController: UIViewController, PTDBeanDelegate, UITableViewDel
         
         print(theString)
         
+        if ((dupItems.objectForKey(theString)) != nil){
+            
+            let itemCount : Int = dupItems.objectForKey(theString) as! Int + 1
+            
+            // Increase the item count
+            dupItems.setValue(itemCount, forKey: theString as String)
+            
+            print (itemCount)
+            
+            itemsTableView.reloadRowsAtIndexPaths(itemsTableView.indexPathsForVisibleRows!, withRowAnimation: .None)
+            
+            
+        } else {
+            
+            dupItems.setValue(1, forKey: theString as String);
 
             self.curItems.addObject(theString)
             
@@ -59,7 +78,7 @@ class ConnectedViewController: UIViewController, PTDBeanDelegate, UITableViewDel
                 NSIndexPath(forRow: self.curItems.count-1, inSection: 0)
                 ], withRowAnimation: .Automatic)
             self.itemsTableView.endUpdates()
-
+        }
         
     }
     
@@ -79,8 +98,23 @@ class ConnectedViewController: UIViewController, PTDBeanDelegate, UITableViewDel
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier( "itemCell", forIndexPath: indexPath)
-        cell.textLabel!.text = self.curItems[indexPath.row] as? String
+        
+        
+        
+        let cell = tableView.dequeueReusableCellWithIdentifier( "itemCell", forIndexPath: indexPath) as! DumosItemTableViewCell
+        
+        let itemID : String = curItems.objectAtIndex(indexPath.row) as! String
+        
+        cell.nameLabel.text = itemID
+        cell.countLabel.text = String(dupItems.objectForKey(itemID) as! Int)
+        cell.priceLabel.text = "300.00"
+        
+        cell.addButton.tag = indexPath.row
+        cell.addButton.addTarget(self, action: #selector(ConnectedViewController.addButtontapped(_:)), forControlEvents: .TouchUpInside)
+        
+        cell.subButton.tag = indexPath.row
+        cell.subButton.addTarget(self, action: #selector(ConnectedViewController.subButtontapped(_:)), forControlEvents: .TouchUpInside)
+        
         
         print("about to return cell")
         return cell
@@ -92,8 +126,38 @@ class ConnectedViewController: UIViewController, PTDBeanDelegate, UITableViewDel
     
     func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if (editingStyle == UITableViewCellEditingStyle.Delete) {
+            
+            let itemID : String = curItems.objectAtIndex(indexPath.row) as! String
+            
             curItems.removeObjectAtIndex(indexPath.row);
+            dupItems.removeObjectForKey(itemID)
             tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
+        }
+    }
+    
+    //MARK: Button Functions 
+    
+    func addButtontapped(sender: AnyObject){
+        
+        let itemID = curItems.objectAtIndex(sender.tag) as! String
+        let count = dupItems.objectForKey(itemID) as! Int + 1
+        let indexPath = NSIndexPath(forRow: sender.tag, inSection: 0)
+        
+        
+        dupItems.setObject(count, forKey: itemID)
+        
+        itemsTableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: .None)
+    }
+    
+    func subButtontapped(sender: AnyObject){
+        
+        let itemID = curItems.objectAtIndex(sender.tag) as! String
+        let count = dupItems.objectForKey(itemID) as! Int
+        let indexPath = NSIndexPath(forRow: sender.tag, inSection: 0)
+        
+        if (count != 1) {
+            dupItems.setObject(count - 1, forKey: itemID)
+            itemsTableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: .None)
         }
     }
     

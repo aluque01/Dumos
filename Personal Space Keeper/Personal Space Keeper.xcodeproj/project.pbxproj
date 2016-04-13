@@ -18,6 +18,7 @@
 		B749254A1C8BFDAA003CC16E /* DisconnectedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B74925491C8BFDAA003CC16E /* DisconnectedViewController.swift */; };
 		B749254C1C8C0033003CC16E /* ConnectedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B749254B1C8C0033003CC16E /* ConnectedViewController.swift */; };
 		B74925551C8C0BDD003CC16E /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B74925541C8C0BDD003CC16E /* AudioToolbox.framework */; };
+		B7712A3E1CBE960F00F4E639 /* DumosItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7712A3D1CBE960F00F4E639 /* DumosItemTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +56,7 @@
 		B74925491C8BFDAA003CC16E /* DisconnectedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DisconnectedViewController.swift; sourceTree = "<group>"; };
 		B749254B1C8C0033003CC16E /* ConnectedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConnectedViewController.swift; sourceTree = "<group>"; };
 		B74925541C8C0BDD003CC16E /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		B7712A3D1CBE960F00F4E639 /* DumosItemTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DumosItemTableViewCell.swift; sourceTree = "<group>"; };
 		E77A71D644D8056CB65CEC1C /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		F84EB46D0316E2837B79938A /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -118,6 +120,7 @@
 				B749251D1C8BF572003CC16E /* Assets.xcassets */,
 				B749251F1C8BF572003CC16E /* LaunchScreen.storyboard */,
 				B74925221C8BF572003CC16E /* Info.plist */,
+				B7712A3D1CBE960F00F4E639 /* DumosItemTableViewCell.swift */,
 			);
 			path = "Personal Space Keeper";
 			sourceTree = "<group>";
@@ -364,6 +367,7 @@
 				B749254A1C8BFDAA003CC16E /* DisconnectedViewController.swift in Sources */,
 				B749254C1C8C0033003CC16E /* ConnectedViewController.swift in Sources */,
 				B74925171C8BF572003CC16E /* AppDelegate.swift in Sources */,
+				B7712A3E1CBE960F00F4E639 /* DumosItemTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
