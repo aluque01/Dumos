@@ -9,69 +9,24 @@
 import UIKit
 import AudioToolbox
 
-class ConnectedViewController: UIViewController, PTDBeanDelegate {
-
+class ConnectedViewController: UIViewController, PTDBeanDelegate, UITableViewDelegate, UITableViewDataSource {
+    
     var connectedBean: PTDBean?
     var curLimit = 0.5
     
-    // MARK: Lifecycle
+    var curItems : NSMutableArray = NSMutableArray()
+    
+    
+    @IBOutlet weak var itemsTableView : UITableView!
     
     @IBOutlet weak var BeanNameLabel: UILabel!
     
-    @IBOutlet weak var DistanceLabel: UILabel!
-    @IBOutlet weak var LimitLabel: UILabel!
-    
-    @IBOutlet weak var ProgressBar: UIProgressView!
-  
-    @IBOutlet weak var OneMeter: UIButton!
-    @IBOutlet weak var TwoMeter: UIButton!
-    @IBOutlet weak var ThreeMeter: UIButton!
-    @IBOutlet weak var FourMeter: UIButton!
-    @IBOutlet weak var FiveMeter: UIButton!
-    
-
-    
-    
-    @IBAction func buttonPressed(sender: AnyObject){
-        switch sender.tag{
-        case 1:
-            curLimit = 0.1
-            LimitLabel.text = "Current Limit: 0.1 meters"
-        case 2:
-            curLimit = 0.2
-            LimitLabel.text = "Current Limit: 0.2 meters"
-        case 3:
-            curLimit = 0.3
-            LimitLabel.text = "Current Limit: 0.3 meters"
-        case 4:
-            curLimit = 0.4
-            LimitLabel.text = "Current Limit: 0.4 meters"
-        case 5:
-            curLimit = 0.5
-            LimitLabel.text = "Current Limit: 0.5 meters"
-        default:
-            curLimit = 0.5
-            LimitLabel.text = "Current Limit: 0.5 meters"
-        }
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        ProgressBar.transform = CGAffineTransformScale(ProgressBar.transform, 1, 40)
-        
-        // Update the name label.
-        BeanNameLabel.text = connectedBean?.name
-        let buttons = [OneMeter, TwoMeter, ThreeMeter, FourMeter, FiveMeter]
-        
-        
-        for button in buttons{
-            button.backgroundColor = UIColor.clearColor()
-            button.layer.cornerRadius = 5
-            button.layer.borderWidth = 1
-            button.layer.borderColor = self.view.tintColor.CGColor
-        }
-        
+        itemsTableView.delegate = self;
+        itemsTableView.dataSource = self;
         
     }
     
@@ -90,22 +45,56 @@ class ConnectedViewController: UIViewController, PTDBeanDelegate {
     // MARK: PTDBeanDelegate
     
     func bean(bean: PTDBean!, serialDataReceived data:NSData) {
-        let theString:NSString = NSString(data: data, encoding: NSASCIIStringEncoding)!
-        let distFloat = theString.floatValue * 340.0 / 2 / 1e6
+        let theString:NSString = NSString(data: data, encoding: NSUTF8StringEncoding)!
         
-        DistanceLabel.text = "Distance: " + distFloat.description + "meters"
-        
-        ProgressBar.progress = distFloat * 2.0
-        
-        if(Double(distFloat) < curLimit){
-            
-            AudioServicesPlayAlertSound(kSystemSoundID_Vibrate)
-            ProgressBar.tintColor = UIColor.redColor()
-        } else {
-            ProgressBar.tintColor = UIColor.greenColor()
-        }
         
         print(theString)
+        
+
+            self.curItems.addObject(theString)
+            
+            // Update Table Data
+            self.itemsTableView.beginUpdates()
+            self.itemsTableView.insertRowsAtIndexPaths([
+                NSIndexPath(forRow: self.curItems.count-1, inSection: 0)
+                ], withRowAnimation: .Automatic)
+            self.itemsTableView.endUpdates()
+
+        
+    }
+    
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        return 1;
+    }
+    
+    //MARK : table functions
+    func numberOfRowsInTableView(aTableView: UITableView) -> Int
+    {
+        return curItems.count
+    }
+    
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        NSLog("Num rows in section: %i", curItems.count)
+        return curItems.count
+    }
+    
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCellWithIdentifier( "itemCell", forIndexPath: indexPath)
+        cell.textLabel!.text = self.curItems[indexPath.row] as? String
+        
+        print("about to return cell")
+        return cell
+    }
+    
+    func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+        return true
+    }
+    
+    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        if (editingStyle == UITableViewCellEditingStyle.Delete) {
+            curItems.removeObjectAtIndex(indexPath.row);
+            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
+        }
     }
     
     // MARK: Helper
@@ -126,6 +115,8 @@ class ConnectedViewController: UIViewController, PTDBeanDelegate {
         
         connectedBean?.setLedColor(color)
     }
-
-
+    
+    
+    
+    
 }

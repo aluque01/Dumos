@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
     </dependencies>
     <scenes>
@@ -81,70 +82,27 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Distance:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="thT-iy-tIn">
-                                <rect key="frame" x="20" y="69" width="374" height="33"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" tag="1" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XP0-b0-5ne">
-                                <rect key="frame" x="20" y="181" width="70" height="30"/>
-                                <state key="normal" title=".1 Meter"/>
-                                <connections>
-                                    <action selector="buttonPressed:" destination="3GA-uT-9dq" eventType="touchUpInside" id="9ri-fL-Y2H"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" tag="2" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LxU-72-M4D">
-                                <rect key="frame" x="172" y="181" width="70" height="30"/>
-                                <state key="normal" title=".2 Meter"/>
-                                <connections>
-                                    <action selector="buttonPressed:" destination="3GA-uT-9dq" eventType="touchUpInside" id="khK-n9-Ugg"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" tag="3" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aWc-uc-DuA">
-                                <rect key="frame" x="324" y="181" width="70" height="30"/>
-                                <state key="normal" title=".3 Meter"/>
-                                <connections>
-                                    <action selector="buttonPressed:" destination="3GA-uT-9dq" eventType="touchUpInside" id="PU6-Sd-Faa"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" tag="4" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B9r-d2-f5s">
-                                <rect key="frame" x="20" y="219" width="70" height="30"/>
-                                <state key="normal" title=".4 Meter"/>
-                                <connections>
-                                    <action selector="buttonPressed:" destination="3GA-uT-9dq" eventType="touchUpInside" id="hpd-9V-n0C"/>
-                                </connections>
-                            </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Current Limit: 0.5 meters" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qn4-IC-lwt">
-                                <rect key="frame" x="20" y="134" width="374" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" tag="5" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hzd-bB-3Sw">
-                                <rect key="frame" x="324" y="219" width="70" height="30"/>
-                                <state key="normal" title=".5 Meter"/>
-                                <connections>
-                                    <action selector="buttonPressed:" destination="3GA-uT-9dq" eventType="touchUpInside" id="WOl-IQ-zIB"/>
-                                </connections>
-                            </button>
-                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" fixedFrame="YES" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="ml5-t2-gD0">
-                                <rect key="frame" x="20" y="377" width="374" height="2"/>
-                            </progressView>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="l6G-ff-jy5">
+                                <rect key="frame" x="0.0" y="136" width="414" height="600"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="itemCell" id="eGl-PA-o6w">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="eGl-PA-o6w" id="QkE-PD-9Gw">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
                     <connections>
                         <outlet property="BeanNameLabel" destination="gGU-BI-OsK" id="cCK-x8-MGq"/>
-                        <outlet property="DistanceLabel" destination="thT-iy-tIn" id="W7z-hp-2aq"/>
-                        <outlet property="FiveMeter" destination="Hzd-bB-3Sw" id="6ES-QV-H09"/>
-                        <outlet property="FourMeter" destination="B9r-d2-f5s" id="h9d-aW-Ab3"/>
-                        <outlet property="LimitLabel" destination="Qn4-IC-lwt" id="rej-cR-nhU"/>
-                        <outlet property="OneMeter" destination="XP0-b0-5ne" id="UQb-lQ-8Is"/>
-                        <outlet property="ProgressBar" destination="ml5-t2-gD0" id="3ZJ-yA-mLB"/>
-                        <outlet property="ThreeMeter" destination="aWc-uc-DuA" id="JQv-pz-Yrc"/>
-                        <outlet property="TwoMeter" destination="LxU-72-M4D" id="Dzi-ub-aDz"/>
+                        <outlet property="itemsTableView" destination="l6G-ff-jy5" id="BYG-H1-bpT"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ClV-Ro-wIe" userLabel="First Responder" sceneMemberID="firstResponder"/>

@@ -248,7 +248,7 @@
 				TargetAttributes = {
 					B74925121C8BF572003CC16E = {
 						CreatedOnToolsVersion = 7.2.1;
-						DevelopmentTeam = B3X4VZ98EJ;
+						DevelopmentTeam = 2TQFYPFZW6;
 					};
 					B74925261C8BF572003CC16E = {
 						CreatedOnToolsVersion = 7.2.1;
@@ -510,7 +510,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = "Personal Space Keeper/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "COMP50-WD-Dumos";
+				PRODUCT_BUNDLE_IDENTIFIER = com.comp50.dumos;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Bridging-Header.h";
@@ -526,7 +526,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = "Personal Space Keeper/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "COMP50-WD-Dumos";
+				PRODUCT_BUNDLE_IDENTIFIER = com.comp50.dumos;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Bridging-Header.h";
