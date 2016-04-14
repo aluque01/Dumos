@@ -19,6 +19,11 @@
 		B749254C1C8C0033003CC16E /* ConnectedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B749254B1C8C0033003CC16E /* ConnectedViewController.swift */; };
 		B74925551C8C0BDD003CC16E /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B74925541C8C0BDD003CC16E /* AudioToolbox.framework */; };
 		B7712A3E1CBE960F00F4E639 /* DumosItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7712A3D1CBE960F00F4E639 /* DumosItemTableViewCell.swift */; };
+		B7712A441CC022BE00F4E639 /* drunk.jpg in Resources */ = {isa = PBXBuildFile; fileRef = B7712A401CC022BE00F4E639 /* drunk.jpg */; };
+		B7712A451CC022BE00F4E639 /* hover.png in Resources */ = {isa = PBXBuildFile; fileRef = B7712A411CC022BE00F4E639 /* hover.png */; };
+		B7712A461CC022BE00F4E639 /* oculus.png in Resources */ = {isa = PBXBuildFile; fileRef = B7712A421CC022BE00F4E639 /* oculus.png */; };
+		B7712A471CC022BE00F4E639 /* phantom.png in Resources */ = {isa = PBXBuildFile; fileRef = B7712A431CC022BE00F4E639 /* phantom.png */; };
+		B7712A491CC0352400F4E639 /* CheckoutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7712A481CC0352400F4E639 /* CheckoutViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +62,11 @@
 		B749254B1C8C0033003CC16E /* ConnectedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConnectedViewController.swift; sourceTree = "<group>"; };
 		B74925541C8C0BDD003CC16E /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		B7712A3D1CBE960F00F4E639 /* DumosItemTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DumosItemTableViewCell.swift; sourceTree = "<group>"; };
+		B7712A401CC022BE00F4E639 /* drunk.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = drunk.jpg; sourceTree = "<group>"; };
+		B7712A411CC022BE00F4E639 /* hover.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hover.png; sourceTree = "<group>"; };
+		B7712A421CC022BE00F4E639 /* oculus.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = oculus.png; sourceTree = "<group>"; };
+		B7712A431CC022BE00F4E639 /* phantom.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = phantom.png; sourceTree = "<group>"; };
+		B7712A481CC0352400F4E639 /* CheckoutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckoutViewController.swift; sourceTree = "<group>"; };
 		E77A71D644D8056CB65CEC1C /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		F84EB46D0316E2837B79938A /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -113,6 +123,7 @@
 		B74925151C8BF572003CC16E /* Personal Space Keeper */ = {
 			isa = PBXGroup;
 			children = (
+				B7712A3F1CC0229600F4E639 /* Images */,
 				B749254D1C8C0072003CC16E /* Views */,
 				B74925441C8BFCAE003CC16E /* View Controllers */,
 				B74925161C8BF572003CC16E /* AppDelegate.swift */,
@@ -149,6 +160,7 @@
 				B74925491C8BFDAA003CC16E /* DisconnectedViewController.swift */,
 				B749254B1C8C0033003CC16E /* ConnectedViewController.swift */,
 				B74925181C8BF572003CC16E /* ViewController.swift */,
+				B7712A481CC0352400F4E639 /* CheckoutViewController.swift */,
 			);
 			name = "View Controllers";
 			path = ..;
@@ -160,6 +172,17 @@
 			);
 			name = Views;
 			path = ..;
+			sourceTree = "<group>";
+		};
+		B7712A3F1CC0229600F4E639 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				B7712A401CC022BE00F4E639 /* drunk.jpg */,
+				B7712A411CC022BE00F4E639 /* hover.png */,
+				B7712A421CC022BE00F4E639 /* oculus.png */,
+				B7712A431CC022BE00F4E639 /* phantom.png */,
+			);
+			name = Images;
 			sourceTree = "<group>";
 		};
 		BD836980F0889586902D44CB /* Pods */ = {
@@ -288,8 +311,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B7712A461CC022BE00F4E639 /* oculus.png in Resources */,
+				B7712A441CC022BE00F4E639 /* drunk.jpg in Resources */,
+				B7712A451CC022BE00F4E639 /* hover.png in Resources */,
 				B74925211C8BF572003CC16E /* LaunchScreen.storyboard in Resources */,
 				B749251E1C8BF572003CC16E /* Assets.xcassets in Resources */,
+				B7712A471CC022BE00F4E639 /* phantom.png in Resources */,
 				B749251C1C8BF572003CC16E /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -367,6 +394,7 @@
 				B749254A1C8BFDAA003CC16E /* DisconnectedViewController.swift in Sources */,
 				B749254C1C8C0033003CC16E /* ConnectedViewController.swift in Sources */,
 				B74925171C8BF572003CC16E /* AppDelegate.swift in Sources */,
+				B7712A491CC0352400F4E639 /* CheckoutViewController.swift in Sources */,
 				B7712A3E1CBE960F00F4E639 /* DumosItemTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -13,6 +13,7 @@ class DumosItemTableViewCell: UITableViewCell {
     var itemName : String = ""
     var itemCount : Int = 0
     var price : Double = 0.0
+    var itemID : String = ""
     
     
     @IBOutlet weak var nameLabel : UILabel!
@@ -27,6 +28,9 @@ class DumosItemTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        
+        self.itemImage.contentMode = UIViewContentMode.ScaleAspectFill
+        self.itemImage.clipsToBounds = true
     }
 
     override func setSelected(selected: Bool, animated: Bool) {

@@ -12,6 +12,7 @@ class DisconnectedViewController: UIViewController, PTDBeanManagerDelegate, UITa
     
     let connectedViewControllerSegueIdentifier = "ViewConnection"
     var beanArray : [PTDBean] = [PTDBean]()
+    var beanSet : NSMutableSet = NSMutableSet()
     
     var manager: PTDBeanManager!
     var connectedBean: PTDBean? {
@@ -43,6 +44,7 @@ class DisconnectedViewController: UIViewController, PTDBeanManagerDelegate, UITa
             let vc = segue.destinationViewController as! ConnectedViewController
             vc.connectedBean = connectedBean
             vc.connectedBean?.delegate = vc
+            vc.manager = self.manager
         }
     }
     
@@ -77,8 +79,11 @@ class DisconnectedViewController: UIViewController, PTDBeanManagerDelegate, UITa
         if connectedBean == nil {
             if bean.state == .Discovered {
                 //manager.connectToBean(bean, error: nil)
-                beanArray.append(bean)
-                beanTableView.reloadData()
+                if(!beanSet.containsObject(bean)){
+                    beanSet.addObject(bean)
+                    beanArray.append(bean)
+                    beanTableView.reloadData()
+                }
             }
         }
     }

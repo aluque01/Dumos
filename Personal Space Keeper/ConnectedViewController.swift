@@ -11,16 +11,54 @@ import AudioToolbox
 
 class ConnectedViewController: UIViewController, PTDBeanDelegate, UITableViewDelegate, UITableViewDataSource {
     
+    
+    // Hard coded databse for now
+    
+    class saleItem{
+        
+        var itemID : String
+        var name : String
+        var price : Double
+        var image : UIImage
+        
+        init(itemID: String, name: String, price: Double, image: UIImage){
+            self.itemID = itemID
+            self.name = name
+            self.price = price
+            self.image = image
+        }
+    }
+    
+    
+    let hover : saleItem = saleItem(itemID: "hover", name: "Lexus Hover Board", price: 15000.00, image: UIImage(named: "hover.png")!)
+    
+    let blueZone : saleItem = saleItem(itemID: "bluzone", name: "Helen's Bluezone", price: 15.00, image: UIImage(named: "drunk.jpg")!)
+    
+    let oculus : saleItem = saleItem(itemID: "oculuus", name: "Oculus Rift", price: 599.00, image: UIImage(named: "oculus.png")!)
+    
+    let drone : saleItem = saleItem(itemID: "drone", name: "DJI Phantom 3 4K", price: 999.00, image: UIImage(named: "phantom.png")!)
+    
+    var availableItems: NSMutableDictionary = NSMutableDictionary()
+    
+    // End database
+    
+    
     var connectedBean: PTDBean?
+    var manager: PTDBeanManager!
     var curLimit = 0.5
+    var curTotal = 0.00
     
     var curItems : NSMutableArray = NSMutableArray()
     var dupItems : NSMutableDictionary = NSMutableDictionary()
     
     
     @IBOutlet weak var itemsTableView : UITableView!
-    
     @IBOutlet weak var BeanNameLabel: UILabel!
+    @IBOutlet weak var totalLabel : UILabel!
+    @IBOutlet weak var checkOutButton : UIButton!
+    @IBOutlet weak var cancelButton : UIButton!
+    
+
     
     
     override func viewDidLoad() {
@@ -31,6 +69,18 @@ class ConnectedViewController: UIViewController, PTDBeanDelegate, UITableViewDel
         
         //remove selection hightlighting
         itemsTableView.allowsSelection = false
+        
+        
+        // Dictionary items to be removed later 
+        availableItems.setObject(hover, forKey: "hover")
+        availableItems.setObject(blueZone, forKey: "bluzone")
+        availableItems.setObject(oculus, forKey: "oculuus")
+        availableItems.setObject(drone, forKey: "drone")
+        
+        //Add button functions
+        checkOutButton.addTarget(self, action: #selector(ConnectedViewController.checkoutButtonTapped(_:)), forControlEvents: .TouchUpInside)
+        cancelButton.addTarget(self, action: #selector(ConnectedViewController.cancelButtonPressed(_:)), forControlEvents: .TouchUpInside)
+        
         
     }
     
@@ -65,6 +115,13 @@ class ConnectedViewController: UIViewController, PTDBeanDelegate, UITableViewDel
             
             itemsTableView.reloadRowsAtIndexPaths(itemsTableView.indexPathsForVisibleRows!, withRowAnimation: .None)
             
+            // Now increase price
+            let currItem : saleItem = availableItems.objectForKey(theString) as! saleItem
+            
+            curTotal += currItem.price
+            
+            totalLabel.text = "Total: $" + String(format:"%.02f", curTotal)
+            
             
         } else {
             
@@ -78,6 +135,16 @@ class ConnectedViewController: UIViewController, PTDBeanDelegate, UITableViewDel
                 NSIndexPath(forRow: self.curItems.count-1, inSection: 0)
                 ], withRowAnimation: .Automatic)
             self.itemsTableView.endUpdates()
+            
+            // Now set price
+            
+            let currItem : saleItem = availableItems.objectForKey(theString) as! saleItem
+            
+            curTotal += currItem.price
+            
+            totalLabel.text = "Total: $" + String(format:"%.02f", curTotal)
+            
+            
         }
         
     }
@@ -105,9 +172,19 @@ class ConnectedViewController: UIViewController, PTDBeanDelegate, UITableViewDel
         
         let itemID : String = curItems.objectAtIndex(indexPath.row) as! String
         
-        cell.nameLabel.text = itemID
+        let currItem : saleItem = availableItems.objectForKey(itemID) as! saleItem
+        
+        cell.nameLabel.text = currItem.name
         cell.countLabel.text = String(dupItems.objectForKey(itemID) as! Int)
-        cell.priceLabel.text = "300.00"
+        cell.priceLabel.text = "$" + String(format:"%.02f", currItem.price)
+        cell.itemImage.image = currItem.image
+        cell.itemID = currItem.itemID
+        
+        // FIx image view for cells 
+        
+        //cell.itemImage.contentMode = UIViewContentMode.ScaleAspectFill
+        //cell.itemImage.clipsToBounds = true
+        
         
         cell.addButton.tag = indexPath.row
         cell.addButton.addTarget(self, action: #selector(ConnectedViewController.addButtontapped(_:)), forControlEvents: .TouchUpInside)
@@ -129,6 +206,18 @@ class ConnectedViewController: UIViewController, PTDBeanDelegate, UITableViewDel
             
             let itemID : String = curItems.objectAtIndex(indexPath.row) as! String
             
+            // Adjust the price
+            
+            let currItem : saleItem = availableItems.objectForKey(itemID) as! saleItem
+            
+            let count: Int = dupItems.objectForKey(itemID) as! Int
+            
+            curTotal -= currItem.price * Double(count)
+            
+            totalLabel.text = "Total: $" + String(format:"%.02f", curTotal)
+            
+            // Now remove the item
+            
             curItems.removeObjectAtIndex(indexPath.row);
             dupItems.removeObjectForKey(itemID)
             tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
@@ -147,6 +236,14 @@ class ConnectedViewController: UIViewController, PTDBeanDelegate, UITableViewDel
         dupItems.setObject(count, forKey: itemID)
         
         itemsTableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: .None)
+        
+        // Adjust the total
+        
+        let currItem : saleItem = availableItems.objectForKey(itemID) as! saleItem
+        
+        curTotal += currItem.price
+        
+        totalLabel.text = "Total: $" + String(format:"%.02f", curTotal)
     }
     
     func subButtontapped(sender: AnyObject){
@@ -158,15 +255,35 @@ class ConnectedViewController: UIViewController, PTDBeanDelegate, UITableViewDel
         if (count != 1) {
             dupItems.setObject(count - 1, forKey: itemID)
             itemsTableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: .None)
+            
+            // Adjust the total 
+            let currItem : saleItem = availableItems.objectForKey(itemID) as! saleItem
+            
+            curTotal -= currItem.price
+            
+            totalLabel.text = "Total: $" + String(format:"%.02f", curTotal)
         }
     }
     
+    
+    func checkoutButtonTapped(sender: AnyObject){
+        print("Customer wants to check out")
+        
+        self.performSegueWithIdentifier("checkOutSegue", sender: self)
+    }
+    
+    func cancelButtonPressed(sender: AnyObject){
+        // Disconnect from bean and go back
+        manager.disconnectBean(connectedBean, error: nil)
+        self.dismissViewControllerAnimated(true, completion: {})
+    }
+    
+    
+    
     // MARK: Helper
     
-    func updatesonicView() {
-        
-        
-    }
+    
+    
     
     func updateBean() {
         
