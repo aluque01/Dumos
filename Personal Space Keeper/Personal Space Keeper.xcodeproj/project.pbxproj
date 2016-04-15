@@ -45,7 +45,7 @@
 
 /* Begin PBXFileReference section */
 		214B2F82DADDE067727C9B2E /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		B74925131C8BF572003CC16E /* Personal Space Keeper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Personal Space Keeper.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B74925131C8BF572003CC16E /* Dumos.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Dumos.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B74925161C8BF572003CC16E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B74925181C8BF572003CC16E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ViewController.swift; path = "Personal Space Keeper/ViewController.swift"; sourceTree = "<group>"; };
 		B749251B1C8BF572003CC16E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -113,7 +113,7 @@
 		B74925141C8BF572003CC16E /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				B74925131C8BF572003CC16E /* Personal Space Keeper.app */,
+				B74925131C8BF572003CC16E /* Dumos.app */,
 				B74925271C8BF572003CC16E /* Personal Space KeeperTests.xctest */,
 				B74925321C8BF572003CC16E /* Personal Space KeeperUITests.xctest */,
 			);
@@ -223,7 +223,7 @@
 			);
 			name = "Personal Space Keeper";
 			productName = "Personal Space Keeper";
-			productReference = B74925131C8BF572003CC16E /* Personal Space Keeper.app */;
+			productReference = B74925131C8BF572003CC16E /* Dumos.app */;
 			productType = "com.apple.product-type.application";
 		};
 		B74925261C8BF572003CC16E /* Personal Space KeeperTests */ = {
@@ -543,7 +543,7 @@
 				INFOPLIST_FILE = "Personal Space Keeper/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "COMP50-WD.Personal-Space-Keeper";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Dumos;
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Bridging-Header.h";
 			};
@@ -559,7 +559,7 @@
 				INFOPLIST_FILE = "Personal Space Keeper/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "COMP50-WD.Personal-Space-Keeper";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Dumos;
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Bridging-Header.h";
 			};

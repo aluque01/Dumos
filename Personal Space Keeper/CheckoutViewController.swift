@@ -12,13 +12,25 @@ class CheckoutViewController: UIViewController {
     
     
     @IBOutlet weak var cancelButton : UIButton!
+    @IBOutlet weak var totalLabel : UILabel!
+    
+    var total : Double = 0.0
+    var numberFormatter : NSNumberFormatter = NSNumberFormatter()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // Number formatter
+        numberFormatter.numberStyle = .CurrencyStyle
         
         // Set up button
         cancelButton.addTarget(self, action: #selector(CheckoutViewController.cancelButtonPushed(_:)), forControlEvents: .TouchUpInside)
+        
+        
+        // Set up the label 
+        totalLabel.textAlignment = .Center
+        totalLabel.text = numberFormatter.stringFromNumber(total)!
+        
     
     }
 

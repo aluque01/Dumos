@@ -31,6 +31,9 @@ class DumosItemTableViewCell: UITableViewCell {
         
         self.itemImage.contentMode = UIViewContentMode.ScaleAspectFill
         self.itemImage.clipsToBounds = true
+        self.itemImage.layer.cornerRadius = 10.0
+        
+        
     }
 
     override func setSelected(selected: Bool, animated: Bool) {

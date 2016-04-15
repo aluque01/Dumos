@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "B74925121C8BF572003CC16E"
-               BuildableName = "Personal Space Keeper.app"
+               BuildableName = "Dumos.app"
                BlueprintName = "Personal Space Keeper"
                ReferencedContainer = "container:Personal Space Keeper.xcodeproj">
             </BuildableReference>
@@ -53,7 +53,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "B74925121C8BF572003CC16E"
-            BuildableName = "Personal Space Keeper.app"
+            BuildableName = "Dumos.app"
             BlueprintName = "Personal Space Keeper"
             ReferencedContainer = "container:Personal Space Keeper.xcodeproj">
          </BuildableReference>
@@ -76,7 +76,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "B74925121C8BF572003CC16E"
-            BuildableName = "Personal Space Keeper.app"
+            BuildableName = "Dumos.app"
             BlueprintName = "Personal Space Keeper"
             ReferencedContainer = "container:Personal Space Keeper.xcodeproj">
          </BuildableReference>
@@ -95,7 +95,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "B74925121C8BF572003CC16E"
-            BuildableName = "Personal Space Keeper.app"
+            BuildableName = "Dumos.app"
             BlueprintName = "Personal Space Keeper"
             ReferencedContainer = "container:Personal Space Keeper.xcodeproj">
          </BuildableReference>

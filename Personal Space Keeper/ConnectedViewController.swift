@@ -51,6 +51,9 @@ class ConnectedViewController: UIViewController, PTDBeanDelegate, UITableViewDel
     var curItems : NSMutableArray = NSMutableArray()
     var dupItems : NSMutableDictionary = NSMutableDictionary()
     
+    var numberFormatter = NSNumberFormatter()
+    
+    
     
     @IBOutlet weak var itemsTableView : UITableView!
     @IBOutlet weak var BeanNameLabel: UILabel!
@@ -67,8 +70,15 @@ class ConnectedViewController: UIViewController, PTDBeanDelegate, UITableViewDel
         itemsTableView.delegate = self;
         itemsTableView.dataSource = self;
         
+        // Currency Format
+        numberFormatter.numberStyle = .CurrencyStyle
+        
         //remove selection hightlighting
         itemsTableView.allowsSelection = false
+        
+        // Bean Name 
+        self.BeanNameLabel.text = "Connected to: " + (connectedBean?.name)!
+        self.BeanNameLabel.textAlignment = .Center
         
         
         // Dictionary items to be removed later 
@@ -102,49 +112,53 @@ class ConnectedViewController: UIViewController, PTDBeanDelegate, UITableViewDel
         let theString:NSString = NSString(data: data, encoding: NSUTF8StringEncoding)!
         
         
+        // Ensure it doesn't crash if it sees an item that's not available 
+        if(availableItems.objectForKey(theString) != nil){
+        
         print(theString)
         
-        if ((dupItems.objectForKey(theString)) != nil){
-            
-            let itemCount : Int = dupItems.objectForKey(theString) as! Int + 1
-            
-            // Increase the item count
-            dupItems.setValue(itemCount, forKey: theString as String)
-            
-            print (itemCount)
-            
-            itemsTableView.reloadRowsAtIndexPaths(itemsTableView.indexPathsForVisibleRows!, withRowAnimation: .None)
-            
-            // Now increase price
-            let currItem : saleItem = availableItems.objectForKey(theString) as! saleItem
-            
-            curTotal += currItem.price
-            
-            totalLabel.text = "Total: $" + String(format:"%.02f", curTotal)
-            
-            
-        } else {
-            
-            dupItems.setValue(1, forKey: theString as String);
-
-            self.curItems.addObject(theString)
-            
-            // Update Table Data
-            self.itemsTableView.beginUpdates()
-            self.itemsTableView.insertRowsAtIndexPaths([
-                NSIndexPath(forRow: self.curItems.count-1, inSection: 0)
-                ], withRowAnimation: .Automatic)
-            self.itemsTableView.endUpdates()
-            
-            // Now set price
-            
-            let currItem : saleItem = availableItems.objectForKey(theString) as! saleItem
-            
-            curTotal += currItem.price
-            
-            totalLabel.text = "Total: $" + String(format:"%.02f", curTotal)
-            
-            
+            if ((dupItems.objectForKey(theString)) != nil){
+                
+                let itemCount : Int = dupItems.objectForKey(theString) as! Int + 1
+                
+                // Increase the item count
+                dupItems.setValue(itemCount, forKey: theString as String)
+                
+                print (itemCount)
+                
+                itemsTableView.reloadRowsAtIndexPaths(itemsTableView.indexPathsForVisibleRows!, withRowAnimation: .None)
+                
+                // Now increase price
+                let currItem : saleItem = availableItems.objectForKey(theString) as! saleItem
+                
+                curTotal += currItem.price
+                
+                totalLabel.text = "Total: " + numberFormatter.stringFromNumber(curTotal)!
+                
+                
+            } else {
+                
+                dupItems.setValue(1, forKey: theString as String);
+                
+                self.curItems.addObject(theString)
+                
+                // Update Table Data
+                self.itemsTableView.beginUpdates()
+                self.itemsTableView.insertRowsAtIndexPaths([
+                    NSIndexPath(forRow: self.curItems.count-1, inSection: 0)
+                    ], withRowAnimation: .Automatic)
+                self.itemsTableView.endUpdates()
+                
+                // Now set price
+                
+                let currItem : saleItem = availableItems.objectForKey(theString) as! saleItem
+                
+                curTotal += currItem.price
+                
+                totalLabel.text = "Total: " + numberFormatter.stringFromNumber(curTotal)!
+                
+                
+            }
         }
         
     }
@@ -176,7 +190,7 @@ class ConnectedViewController: UIViewController, PTDBeanDelegate, UITableViewDel
         
         cell.nameLabel.text = currItem.name
         cell.countLabel.text = String(dupItems.objectForKey(itemID) as! Int)
-        cell.priceLabel.text = "$" + String(format:"%.02f", currItem.price)
+        cell.priceLabel.text = numberFormatter.stringFromNumber(currItem.price)!
         cell.itemImage.image = currItem.image
         cell.itemID = currItem.itemID
         
@@ -214,7 +228,7 @@ class ConnectedViewController: UIViewController, PTDBeanDelegate, UITableViewDel
             
             curTotal -= currItem.price * Double(count)
             
-            totalLabel.text = "Total: $" + String(format:"%.02f", curTotal)
+            totalLabel.text = "Total: " + numberFormatter.stringFromNumber(curTotal)!
             
             // Now remove the item
             
@@ -243,7 +257,7 @@ class ConnectedViewController: UIViewController, PTDBeanDelegate, UITableViewDel
         
         curTotal += currItem.price
         
-        totalLabel.text = "Total: $" + String(format:"%.02f", curTotal)
+        totalLabel.text = "Total: " + numberFormatter.stringFromNumber(curTotal)!
     }
     
     func subButtontapped(sender: AnyObject){
@@ -261,7 +275,7 @@ class ConnectedViewController: UIViewController, PTDBeanDelegate, UITableViewDel
             
             curTotal -= currItem.price
             
-            totalLabel.text = "Total: $" + String(format:"%.02f", curTotal)
+            totalLabel.text = "Total: " + numberFormatter.stringFromNumber(curTotal)!
         }
     }
     
@@ -276,6 +290,16 @@ class ConnectedViewController: UIViewController, PTDBeanDelegate, UITableViewDel
         // Disconnect from bean and go back
         manager.disconnectBean(connectedBean, error: nil)
         self.dismissViewControllerAnimated(true, completion: {})
+    }
+    
+    
+    // MARK: Navigation
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "checkOutSegue" {
+            let vc = segue.destinationViewController as! CheckoutViewController
+            vc.total = curTotal
+        }
     }
     
     
