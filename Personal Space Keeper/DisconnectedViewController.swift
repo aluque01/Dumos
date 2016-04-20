@@ -37,6 +37,10 @@ class DisconnectedViewController: UIViewController, PTDBeanManagerDelegate, UITa
         beanTableView.dataSource = self
     }
     
+    override func preferredStatusBarStyle() -> UIStatusBarStyle {
+        return UIStatusBarStyle.LightContent
+    }
+    
     // MARK: Navigation
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {

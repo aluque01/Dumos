@@ -29,9 +29,41 @@ class DumosItemTableViewCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
         
+        
+        
+        
+        // Image setup
         self.itemImage.contentMode = UIViewContentMode.ScaleAspectFill
         self.itemImage.clipsToBounds = true
         self.itemImage.layer.cornerRadius = 10.0
+        
+        
+        // Set up design 
+        
+        priceLabel.textColor = UIColor(colorLiteralRed: 0.447, green: 0.447, blue: 0.447, alpha: 1)
+        countLabel.textColor = UIColor(colorLiteralRed: 0.447, green: 0.447, blue: 0.447, alpha: 1)
+
+        
+        // Button setup and rounding
+        addButton.layer.cornerRadius = 15
+        addButton.clipsToBounds = true
+        addButton.backgroundColor = UIColor(colorLiteralRed: 1, green: 0.596, blue: 0, alpha: 1)
+        addButton.tintColor = UIColor.whiteColor()
+        addButton.layer.shadowColor = UIColor(colorLiteralRed: 0.233, green: 0.233, blue: 0.233, alpha: 1).CGColor
+        addButton.layer.shadowOpacity = 0.3
+        addButton.layer.shadowRadius = 1
+        addButton.layer.shadowOffset = CGSize(width: 0.0, height: 0.0)
+        addButton.layer.masksToBounds = false;
+        
+        subButton.layer.cornerRadius = 15
+        subButton.clipsToBounds = true
+        subButton.backgroundColor = UIColor(colorLiteralRed: 1, green: 0.596, blue: 0, alpha: 1)
+        subButton.tintColor = UIColor.whiteColor()
+        subButton.layer.shadowColor = UIColor(colorLiteralRed: 0.233, green: 0.233, blue: 0.233, alpha: 1).CGColor
+        subButton.layer.shadowOpacity = 0.3
+        subButton.layer.shadowRadius = 1
+        subButton.layer.shadowOffset = CGSize(width: 0.0, height: 0.0)
+        subButton.layer.masksToBounds = false;
         
         
     }

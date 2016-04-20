@@ -92,6 +92,45 @@ class ConnectedViewController: UIViewController, PTDBeanDelegate, UITableViewDel
         cancelButton.addTarget(self, action: #selector(ConnectedViewController.cancelButtonPressed(_:)), forControlEvents: .TouchUpInside)
         
         
+        // Set up the UI design 
+        self.view.backgroundColor = UIColor(colorLiteralRed: 0.0, green: 0.588, blue: 0.533, alpha: 1)
+        BeanNameLabel.textColor = UIColor.whiteColor()
+        totalLabel.textColor = UIColor.whiteColor()
+        totalLabel.text = "Total: " + numberFormatter.stringFromNumber(curTotal)!
+        
+        
+        // Button setup and rounding 
+        cancelButton.layer.cornerRadius = 15
+        cancelButton.clipsToBounds = true
+        cancelButton.backgroundColor = UIColor(colorLiteralRed: 1, green: 0.596, blue: 0, alpha: 1)
+        cancelButton.tintColor = UIColor.whiteColor()
+        cancelButton.layer.shadowColor = UIColor(colorLiteralRed: 0.233, green: 0.233, blue: 0.233, alpha: 1).CGColor
+        cancelButton.layer.shadowOpacity = 0.5
+        cancelButton.layer.shadowRadius = 8
+        cancelButton.layer.shadowOffset = CGSize(width: 0.0, height: 0.0)
+        cancelButton.layer.masksToBounds = false;
+        
+        
+        checkOutButton.layer.cornerRadius = 3
+        checkOutButton.clipsToBounds = true
+        checkOutButton.backgroundColor = UIColor(colorLiteralRed: 1, green: 0.596, blue: 0, alpha: 1)
+        checkOutButton.tintColor = UIColor.whiteColor()
+        checkOutButton.layer.shadowColor = UIColor(colorLiteralRed: 0.233, green: 0.233, blue: 0.233, alpha: 1).CGColor
+        checkOutButton.layer.shadowOpacity = 0.5
+        checkOutButton.layer.shadowRadius = 8
+        checkOutButton.layer.shadowOffset = CGSize(width: 0.0, height: 0.0)
+        checkOutButton.layer.masksToBounds = false
+        
+        // Set up table 
+        itemsTableView.separatorColor = UIColor(colorLiteralRed: 0.714, green: 0.714, blue: 0.714, alpha: 1)
+        itemsTableView.separatorInset = UIEdgeInsetsZero
+        itemsTableView.layoutMargins = UIEdgeInsetsZero
+        
+        
+    }
+    
+    override func preferredStatusBarStyle() -> UIStatusBarStyle {
+        return UIStatusBarStyle.LightContent
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -205,6 +244,13 @@ class ConnectedViewController: UIViewController, PTDBeanDelegate, UITableViewDel
         
         cell.subButton.tag = indexPath.row
         cell.subButton.addTarget(self, action: #selector(ConnectedViewController.subButtontapped(_:)), forControlEvents: .TouchUpInside)
+        
+        
+        // Fix cell inset 
+        cell.separatorInset = UIEdgeInsetsZero
+        cell.preservesSuperviewLayoutMargins = false
+        cell.layoutMargins = UIEdgeInsetsZero
+        
         
         
         print("about to return cell")
