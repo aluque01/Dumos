@@ -26,8 +26,9 @@ class DisconnectedViewController: UIViewController, PTDBeanManagerDelegate, UITa
     }
     
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
-    
+    @IBOutlet weak var label : UILabel!
     @IBOutlet weak var beanTableView: UITableView!
+    
     // MARK: Lifecycle
     
     override func viewDidLoad() {
@@ -35,6 +36,16 @@ class DisconnectedViewController: UIViewController, PTDBeanManagerDelegate, UITa
         manager = PTDBeanManager(delegate: self)
         beanTableView.delegate = self
         beanTableView.dataSource = self
+        
+        
+        //Set Up UI 
+        self.view.backgroundColor = UIColor(colorLiteralRed: 0.0, green: 0.588, blue: 0.533, alpha: 1)
+        label.textColor = UIColor.whiteColor()
+        label.textAlignment = .Center
+        
+        beanTableView.separatorColor = UIColor(colorLiteralRed: 0.714, green: 0.714, blue: 0.714, alpha: 1)
+        beanTableView.separatorInset = UIEdgeInsetsZero
+        beanTableView.layoutMargins = UIEdgeInsetsZero
     }
     
     override func preferredStatusBarStyle() -> UIStatusBarStyle {
@@ -129,6 +140,11 @@ class DisconnectedViewController: UIViewController, PTDBeanManagerDelegate, UITa
         
         print("about to return cell")
         return cell
+    }
+    
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        
+        return 80.0
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {

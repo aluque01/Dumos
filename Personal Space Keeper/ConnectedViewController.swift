@@ -81,7 +81,7 @@ class ConnectedViewController: UIViewController, PTDBeanDelegate, UITableViewDel
         self.BeanNameLabel.textAlignment = .Center
         
         
-        // Dictionary items to be removed later 
+        // Dictionary items to be removed later
         availableItems.setObject(hover, forKey: "hover")
         availableItems.setObject(blueZone, forKey: "bluzone")
         availableItems.setObject(oculus, forKey: "oculuus")

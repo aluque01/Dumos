@@ -24,6 +24,7 @@
 		B7712A461CC022BE00F4E639 /* oculus.png in Resources */ = {isa = PBXBuildFile; fileRef = B7712A421CC022BE00F4E639 /* oculus.png */; };
 		B7712A471CC022BE00F4E639 /* phantom.png in Resources */ = {isa = PBXBuildFile; fileRef = B7712A431CC022BE00F4E639 /* phantom.png */; };
 		B7712A491CC0352400F4E639 /* CheckoutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7712A481CC0352400F4E639 /* CheckoutViewController.swift */; };
+		B7DC16551CCE70CF003E4855 /* touchID.png in Resources */ = {isa = PBXBuildFile; fileRef = B7DC16541CCE70CF003E4855 /* touchID.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,6 +68,7 @@
 		B7712A421CC022BE00F4E639 /* oculus.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = oculus.png; sourceTree = "<group>"; };
 		B7712A431CC022BE00F4E639 /* phantom.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = phantom.png; sourceTree = "<group>"; };
 		B7712A481CC0352400F4E639 /* CheckoutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckoutViewController.swift; sourceTree = "<group>"; };
+		B7DC16541CCE70CF003E4855 /* touchID.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = touchID.png; sourceTree = "<group>"; };
 		E77A71D644D8056CB65CEC1C /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		F84EB46D0316E2837B79938A /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -181,6 +183,7 @@
 				B7712A411CC022BE00F4E639 /* hover.png */,
 				B7712A421CC022BE00F4E639 /* oculus.png */,
 				B7712A431CC022BE00F4E639 /* phantom.png */,
+				B7DC16541CCE70CF003E4855 /* touchID.png */,
 			);
 			name = Images;
 			sourceTree = "<group>";
@@ -317,6 +320,7 @@
 				B74925211C8BF572003CC16E /* LaunchScreen.storyboard in Resources */,
 				B749251E1C8BF572003CC16E /* Assets.xcassets in Resources */,
 				B7712A471CC022BE00F4E639 /* phantom.png in Resources */,
+				B7DC16551CCE70CF003E4855 /* touchID.png in Resources */,
 				B749251C1C8BF572003CC16E /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
