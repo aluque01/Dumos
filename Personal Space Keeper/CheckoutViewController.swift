@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import LocalAuthentication
 
 class CheckoutViewController: UIViewController {
     
@@ -29,8 +30,14 @@ class CheckoutViewController: UIViewController {
     @IBOutlet weak var payButton : UIButton!
     
     
+    var connectedBean: PTDBean?
+    var manager: PTDBeanManager!
+    
+    
     var total : Double = 0.0
     var numberFormatter : NSNumberFormatter = NSNumberFormatter()
+    
+
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -88,10 +95,7 @@ class CheckoutViewController: UIViewController {
         payButton.setBackgroundImage(UIImage(named: "touchID.png")!, forState: UIControlState.Normal)
         
         
-
-        
-        
-        
+        payButton.addTarget(self, action: #selector(CheckoutViewController.authenticateUser), forControlEvents: .TouchUpInside)
     
     }
     
@@ -102,6 +106,61 @@ class CheckoutViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func authenticateUser() {
+        // Get the local authentication context.
+        let context : LAContext = LAContext()
+        
+        // Declare a NSError variable.
+        var error: NSError?
+        
+        // Set the reason string that will appear on the authentication alert.
+        let reasonString = "Authentication is needed to pay for your groceries."
+        
+        
+        if context.canEvaluatePolicy(LAPolicy.DeviceOwnerAuthenticationWithBiometrics, error: &error) {
+            [context .evaluatePolicy(LAPolicy.DeviceOwnerAuthenticationWithBiometrics, localizedReason: reasonString, reply: { (success: Bool, evalPolicyError: NSError?) -> Void in
+                
+                if success {
+                    
+                    dispatch_async(dispatch_get_main_queue(),{
+                        
+                        self.manager.disconnectBean(self.connectedBean, error: nil)
+                        
+                        self.view.window!.rootViewController?.dismissViewControllerAnimated(true, completion: nil)
+                        
+                    })
+                    
+                }
+                else{
+                    // If authentication failed then show a message to the console with a short description.
+                    // In case that the error is a user fallback, then show the password alert view.
+                    
+                    print(evalPolicyError?.localizedDescription)
+                    
+                    switch evalPolicyError!.code {
+                        
+                    case LAError.SystemCancel.rawValue:
+                        print("Authentication was cancelled by the system")
+                        
+                    case LAError.UserCancel.rawValue:
+                        print("Authentication was cancelled by the user")
+                        
+                        
+                    default:
+                        print("Authentication failed")
+                        NSOperationQueue.mainQueue().addOperationWithBlock({ () -> Void in
+                            
+                            // DO stuff if authentication failed
+                        })
+                    }
+                }
+                
+            })]
+            
+        }
+        
     }
     
 

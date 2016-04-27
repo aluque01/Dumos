@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		86EA364B986EAF89AB53AFEB /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 214B2F82DADDE067727C9B2E /* libPods.a */; };
+		B724F9B51CD107500004B128 /* LocalAuthentication.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B724F9B41CD107500004B128 /* LocalAuthentication.framework */; };
 		B74925171C8BF572003CC16E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B74925161C8BF572003CC16E /* AppDelegate.swift */; };
 		B74925191C8BF572003CC16E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B74925181C8BF572003CC16E /* ViewController.swift */; };
 		B749251C1C8BF572003CC16E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B749251A1C8BF572003CC16E /* Main.storyboard */; };
@@ -46,6 +47,7 @@
 
 /* Begin PBXFileReference section */
 		214B2F82DADDE067727C9B2E /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		B724F9B41CD107500004B128 /* LocalAuthentication.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LocalAuthentication.framework; path = System/Library/Frameworks/LocalAuthentication.framework; sourceTree = SDKROOT; };
 		B74925131C8BF572003CC16E /* Dumos.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Dumos.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B74925161C8BF572003CC16E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B74925181C8BF572003CC16E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ViewController.swift; path = "Personal Space Keeper/ViewController.swift"; sourceTree = "<group>"; };
@@ -78,6 +80,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B724F9B51CD107500004B128 /* LocalAuthentication.framework in Frameworks */,
 				B74925551C8C0BDD003CC16E /* AudioToolbox.framework in Frameworks */,
 				86EA364B986EAF89AB53AFEB /* libPods.a in Frameworks */,
 			);
@@ -200,6 +203,7 @@
 		F3252D5DF787BB80D8E38E97 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				B724F9B41CD107500004B128 /* LocalAuthentication.framework */,
 				B74925541C8C0BDD003CC16E /* AudioToolbox.framework */,
 				214B2F82DADDE067727C9B2E /* libPods.a */,
 			);

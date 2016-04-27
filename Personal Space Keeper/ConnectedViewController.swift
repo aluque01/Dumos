@@ -345,6 +345,8 @@ class ConnectedViewController: UIViewController, PTDBeanDelegate, UITableViewDel
         if segue.identifier == "checkOutSegue" {
             let vc = segue.destinationViewController as! CheckoutViewController
             vc.total = curTotal
+            vc.connectedBean = self.connectedBean
+            vc.manager = self.manager
         }
     }
     
