@@ -133,13 +133,13 @@ class ConnectedViewController: UIViewController, PTDBeanDelegate, UITableViewDel
     override func viewDidAppear(animated: Bool) {
         // Set up that please wait
         
-        let alertController : UIAlertController = UIAlertController(title: nil, message: "Please wait, establishing serial connection...", preferredStyle: .Alert)
+        let alertController : UIAlertController = UIAlertController(title: nil, message: "Establishing serial connection...", preferredStyle: .Alert)
         
-        let spinner : UIActivityIndicatorView = UIActivityIndicatorView(activityIndicatorStyle: .WhiteLarge)
+        /*let spinner : UIActivityIndicatorView = UIActivityIndicatorView(activityIndicatorStyle: .WhiteLarge)
         spinner.center = CGPointMake(130.5, 65.5)
         spinner.color = UIColor.blackColor()
         spinner.startAnimating()
-        alertController.view.addSubview(spinner)
+        alertController.view.addSubview(spinner)*/
         self.presentViewController(alertController, animated: false, completion: nil)
         
         
