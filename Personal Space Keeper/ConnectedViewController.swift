@@ -125,8 +125,37 @@ class ConnectedViewController: UIViewController, PTDBeanDelegate, UITableViewDel
         itemsTableView.separatorColor = UIColor(colorLiteralRed: 0.714, green: 0.714, blue: 0.714, alpha: 1)
         itemsTableView.separatorInset = UIEdgeInsetsZero
         itemsTableView.layoutMargins = UIEdgeInsetsZero
+    
         
         
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        // Set up that please wait
+        
+        let alertController : UIAlertController = UIAlertController(title: nil, message: "Please wait, establishing serial connection...", preferredStyle: .Alert)
+        
+        let spinner : UIActivityIndicatorView = UIActivityIndicatorView(activityIndicatorStyle: .WhiteLarge)
+        spinner.center = CGPointMake(130.5, 65.5)
+        spinner.color = UIColor.blackColor()
+        spinner.startAnimating()
+        alertController.view.addSubview(spinner)
+        self.presentViewController(alertController, animated: false, completion: nil)
+        
+        
+        delay(8.0){
+            print("ABOUT TO DISMISS LOADING VIEW")
+            alertController.dismissViewControllerAnimated(true, completion: nil)
+        }
+    }
+    
+    func delay(delay:Double, closure:()->()) {
+        dispatch_after(
+            dispatch_time(
+                DISPATCH_TIME_NOW,
+                Int64(delay * Double(NSEC_PER_SEC))
+            ),
+            dispatch_get_main_queue(), closure)
     }
     
     override func preferredStatusBarStyle() -> UIStatusBarStyle {
@@ -322,6 +351,26 @@ class ConnectedViewController: UIViewController, PTDBeanDelegate, UITableViewDel
             curTotal -= currItem.price
             
             totalLabel.text = "Total: " + numberFormatter.stringFromNumber(curTotal)!
+        } else {
+
+            let itemID : String = curItems.objectAtIndex(indexPath.row) as! String
+            
+            // Adjust the price
+            
+            let currItem : saleItem = availableItems.objectForKey(itemID) as! saleItem
+            
+            let count: Int = dupItems.objectForKey(itemID) as! Int
+            
+            curTotal -= currItem.price * Double(count)
+            
+            totalLabel.text = "Total: " + numberFormatter.stringFromNumber(curTotal)!
+            
+            // Now remove the item
+            
+            curItems.removeObjectAtIndex(indexPath.row);
+            dupItems.removeObjectForKey(itemID)
+            itemsTableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
+            
         }
     }
     

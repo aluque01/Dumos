@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ConnectedViewController.swift"
-            timestampString = "483461876.361143"
+            timestampString = "484019139.027715"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "400"
-            endingLineNumber = "400">
+            startingLineNumber = "449"
+            endingLineNumber = "449">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
